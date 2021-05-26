@@ -7,14 +7,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
 
 // Overriding bootstrap colors: (BEFORE bootstrap import) 
-/*$theme-colors: (
-  "primary":  #FC814A,
-  "info": #EDAE49,  
-  "warning": #D7F171, 
-  "secondary":#817E9F,
-  "success": #B5EF8A,
-  "danger": #E88D67
-);*/
+$theme-colors: (
+  "primary":  #BA3F77,
+  "info": #FA8620,  
+  "warning": #FB8F67, 
+  "secondary":#156064,
+  "success": #00C49A,
+  "danger": #ED1C1C
+);
 
 $light: #FDFEFE;
 $body-bg: #FDFEFE; 
@@ -38,7 +38,7 @@ header{
   flex: 0 0 auto;
   #navbarNav .navbar-nav li a, #navbarNav .navbar-nav li i{
     &:hover{
-      color: #FC814A;
+      color: #BA3F77;
     }
   }
 }

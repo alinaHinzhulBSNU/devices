@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { Brand } from '../models/brand.model';
 import { BrandsService } from '../shared/brands.service';
 
@@ -10,7 +11,8 @@ import { BrandsService } from '../shared/brands.service';
 export class BrandsListComponent implements OnInit {
   brands: Brand[] = [];
 
-  constructor(public service: BrandsService) { }
+  constructor(public service: BrandsService,
+              private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.refreshList();
@@ -20,6 +22,11 @@ export class BrandsListComponent implements OnInit {
         this.refreshList();
     });
   }
+
+  // Reactive form
+  form = this.fb.group({
+    name: null
+  });
 
   refreshList(){
     this.service.getBrands().subscribe(
@@ -39,5 +46,20 @@ export class BrandsListComponent implements OnInit {
 
   selectBrand(brand: Brand){
     this.service.setSelectedBrand(brand);
+  }
+
+  search(){
+    var data = this.form.value;
+
+    if(data.name != null){
+      this.service.searchForBrand(data.name).subscribe(
+        data => {
+          this.brands = data as Brand[];
+          this.form.reset();
+        }
+      );
+    }else{
+      this.refreshList();
+    }
   }
 }

@@ -6,7 +6,6 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class DevicesService {
-
   readonly rootURL = environment.baseURL; // URL, що використовується у всіх CRUD - запитах
 
   constructor(public http: HttpClient) { }
@@ -18,5 +17,9 @@ export class DevicesService {
 
   getDevice(id: number){
     return this.http.get(this.rootURL + 'devices/' + id);
+  }
+
+  searchForDevice(price: number){
+    return this.http.get(this.rootURL + 'devices/search/' + price);
   }
 }

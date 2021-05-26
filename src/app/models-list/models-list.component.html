@@ -1,4 +1,21 @@
 <h2 class="text-info p-3">Models:</h2>
+
+<!--Search-->
+<div class="row justify-content-end pb-3">
+    <div class="col-md-4">
+        <form [formGroup]="form" autocomplete="off" (submit)="search()">
+            <div class="row">
+                <div class="col-md-8 col-sm-8">
+                    <input placeholder="Model name" class="form-control" formControlName="name">
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <button type="submit" class="btn btn-block btn-info">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 <div class="row">
     <div class="model-form col-md-5">
         <models-form></models-form>

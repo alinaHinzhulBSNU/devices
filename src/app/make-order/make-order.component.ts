@@ -36,6 +36,11 @@ export class MakeOrderComponent implements OnInit {
   ngOnInit(): void {
     this.loadCities();
     this.refreshItemsList();
+
+    this.orders_service.notifyObservable.subscribe(
+      res => {
+        this.refreshItemsList();
+    });
   }
 
   // List of cities for form
@@ -54,10 +59,9 @@ export class MakeOrderComponent implements OnInit {
     this.orders_service.addOrder(formData).subscribe(
       data => {
         var order = data as Order;
-
+        console.log(this.items);
         this.items.forEach(item => {
           var item_data = {device_id: item.device.id, order_id: order.id, quantity: item.quantity }
-          
           this.items_service.addItem(item_data).subscribe(
             data => {
               localStorage.removeItem('items');

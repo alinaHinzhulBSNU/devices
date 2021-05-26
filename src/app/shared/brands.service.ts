@@ -42,4 +42,8 @@ export class BrandsService {
   deleteBrand(id){ // DELETE
     return this.http.delete(this.rootURL + 'brands/' + id);
   }
+
+  searchForBrand(brand_name: string){
+    return this.http.get(this.rootURL + 'brands/search/' + brand_name);
+  }
 }

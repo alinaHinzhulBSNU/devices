@@ -14,16 +14,20 @@
                 <td>
                     <div class="row">
                         <!--Order details-->
-                        <div class="col-md-10 text-left">
-                            <span class="font-weight-bold">Customer:</span>&nbsp;{{ order.customer_name }};
-                            &nbsp;<span class="font-weight-bold">Phone:</span>&nbsp;{{ order.phone }};
-                            &nbsp;<span class="font-weight-bold">Address:</span>&nbsp;{{ order.address }};
-                            &nbsp;<span class="font-weight-bold">City:</span>&nbsp;{{ order.city.city_name }};
-                            &nbsp;<span class="font-weight-bold">Date:</span>&nbsp;{{ order.date }}<br>
-                            <span class="font-weight-bold">Total sum:</span>
-                            <span class="text-success">
-                                &nbsp;{{ getTotalSum(order) }}$
-                            </span>
+                        <div class="col-md-10">
+                            <p class="text-left">
+                                <span class="font-weight-bold">Customer:</span>&nbsp;{{ order.customer_name }};
+                                &nbsp;<span class="font-weight-bold">Phone:</span>&nbsp;{{ order.phone }};
+                                &nbsp;<span class="font-weight-bold">Address:</span>&nbsp;{{ order.address }};
+                                &nbsp;<span class="font-weight-bold">City:</span>&nbsp;{{ order.city.city_name }};
+                                &nbsp;<span class="font-weight-bold">Date:</span>&nbsp;{{ order.date }}<br>
+                            </p>
+                            <p class="text-center">
+                                <span class="font-weight-bold">Total sum:</span>
+                                <span class="text-success">
+                                    &nbsp;{{ getTotalSum(order) }}$
+                                </span>
+                            </p>
                         </div>
 
                         <!--Delete-->

@@ -42,4 +42,8 @@ export class ModelsService {
   deleteModel(id){ // DELETE
     return this.http.delete(this.rootURL + 'models/' + id);
   }
+
+  searchForModel(name: string){
+    return this.http.get(this.rootURL + 'models/search/' + name);
+  }
 }

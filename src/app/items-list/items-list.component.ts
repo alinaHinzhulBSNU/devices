@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewItem } from '../models/new-item.model';
+import { OrdersService } from '../shared/orders.service';
 
 @Component({
   selector: 'app-items-list',
@@ -9,7 +10,7 @@ import { NewItem } from '../models/new-item.model';
 export class ItemsListComponent implements OnInit {
   items: NewItem[] = [];
 
-  constructor() { }
+  constructor(private orders_service: OrdersService) { }
 
   ngOnInit(): void {
     this.refreshItemsList();
@@ -28,8 +29,11 @@ export class ItemsListComponent implements OnInit {
     for(var i = 0; i < this.items.length; i++){
       if(this.items[i].device.id == item.device.id){
         this.items[i].quantity += 1;
+
         this.saveToLocalStorage();
         this.refreshItemsList();
+
+        this.orders_service.refresh();
       }
     }
   }
@@ -46,6 +50,8 @@ export class ItemsListComponent implements OnInit {
 
         this.saveToLocalStorage();
         this.refreshItemsList();
+
+        this.orders_service.refresh();
       }
     }
   }

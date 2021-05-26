@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { Device } from '../models/device.model';
 import { NewItem } from '../models/new-item.model';
 import { DevicesService } from '../shared/devices.service';
-import { ModelsService } from '../shared/models.service';
 
 @Component({
   selector: 'app-devices-list',
@@ -13,12 +13,18 @@ export class DevicesListComponent implements OnInit {
   devices: Device[] = [];
   items: NewItem[] = [];
   
-  constructor(private devices_service: DevicesService, private models_service: ModelsService) { }
+  constructor(private devices_service: DevicesService, 
+              private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.loadDevices();
     this.refreshItemsList();
   }
+
+  // Reactive form
+  form = this.fb.group({
+    price: null
+  });
 
   // Get all devices
   loadDevices(){
@@ -66,5 +72,21 @@ export class DevicesListComponent implements OnInit {
     localStorage.removeItem('items');
     var new_items = JSON.stringify(this.items);
     localStorage.setItem('items', new_items);
+  }
+
+  // Search by price
+  search(){
+    var data = this.form.value;
+
+    if(data.price != null){
+      this.devices_service.searchForDevice(data.price).subscribe(
+        data => {
+          this.devices = data as Device[];
+          this.form.reset();
+        }
+      );
+    }else{
+      this.loadDevices();
+    }
   }
 }

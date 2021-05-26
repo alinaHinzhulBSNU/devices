@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { Model } from '../models/model.model';
 import { ModelsService } from '../shared/models.service';
 
@@ -10,7 +11,8 @@ import { ModelsService } from '../shared/models.service';
 export class ModelsListComponent implements OnInit {
   models: Model[] = [];
 
-  constructor(private service: ModelsService) { }
+  constructor(private service: ModelsService,
+              private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.refreshList();
@@ -20,6 +22,11 @@ export class ModelsListComponent implements OnInit {
         this.refreshList();
     });
   }
+
+  // Reactive form
+  form = this.fb.group({
+    name: null
+  });
 
   // Get all models
   refreshList(){
@@ -38,8 +45,22 @@ export class ModelsListComponent implements OnInit {
     );
   }
   
-  
   selectModel(model: Model){
     this.service.setSelectedModel(model);
+  }
+
+  search(){
+    var data = this.form.value;
+    
+    if(data.name != null){
+      this.service.searchForModel(data.name).subscribe(
+        data => {
+          this.models = data as Model[];
+          this.form.reset();
+        }
+      );
+    }else{
+      this.refreshList();
+    }
   }
 }
