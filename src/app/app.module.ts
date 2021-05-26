@@ -31,6 +31,8 @@ import { DevicesListComponent } from './devices-list/devices-list.component';
 import { OrdersListComponent } from './orders-list/orders-list.component';
 import { ItemsListComponent } from './items-list/items-list.component';
 import { MakeOrderComponent } from './make-order/make-order.component';
+import { BrandsListComponent } from './brands-list/brands-list.component';
+import { BrandsFormComponent } from './brands-form/brands-form.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { MakeOrderComponent } from './make-order/make-order.component';
     DevicesListComponent,
     OrdersListComponent,
     ItemsListComponent,
-    MakeOrderComponent
+    MakeOrderComponent,
+    BrandsListComponent,
+    BrandsFormComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +58,7 @@ import { MakeOrderComponent } from './make-order/make-order.component';
         {path: 'models', component: ModelsListComponent},
         {path: 'orders', component: OrdersListComponent},
         {path: 'items', component: ItemsListComponent},
+        {path: 'brands', component: BrandsListComponent}
       ]
     ),
     ToastrModule.forRoot()
