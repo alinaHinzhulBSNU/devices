@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseURL: "http://devices-api/api/"
+  //baseURL: "http://devices-api/api/"
+  baseURL: "https://laravel-devices-api.herokuapp.com/api/"
 };
 
 /*
