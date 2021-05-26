@@ -1,1 +1,29 @@
-<p>devices-list works!</p>
+<div class="row">
+    <div *ngFor="let device of devices" class="item col-md-4">
+        <!--Image-->
+        <img src="{{ device.image }}">
+    
+        <!--Info-->
+        <p>
+            &nbsp;<span class="font-weight-bold">{{ device.model.model_name }}</span>,
+            &nbsp;{{ device.ram }}&nbsp;/&nbsp;{{ device.rom }}
+            &nbsp;GB,
+            &nbsp;{{ device.model.diagonal | number : '1.2-2'}}″
+            &nbsp;{{ device.color }}
+        </p>
+    
+        <!--Price-->
+        <p class="price text-info">
+            {{ device.price }}
+            &nbsp;₴
+            <span class="discount text-danger" *ngIf="device.discount > 0">
+                    -&nbsp;{{ device.discount }}&nbsp;%
+            </span>
+        </p>
+
+        <!--Button-->
+        <button type="button" class="btn btn-success" (click)="addToShoppingCart(device)">
+            <i class="fas fa-cart-arrow-down"></i>&nbsp;Add to cart
+        </button>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+i{
+    font-size: xx-large;
+    cursor: pointer;
+    &:hover{
+        opacity: 0.8;
+    }
+}
+h3{
+    width: 100%;
+}
+.order-form{
+    background-color: lavender;
+    padding: 3%;
+    border-radius: 10%;
+    &:hover{
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+    }
+}

@@ -30,6 +30,7 @@ import { ModelsListComponent } from './models-list/models-list.component';
 import { DevicesListComponent } from './devices-list/devices-list.component';
 import { OrdersListComponent } from './orders-list/orders-list.component';
 import { ItemsListComponent } from './items-list/items-list.component';
+import { MakeOrderComponent } from './make-order/make-order.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ItemsListComponent } from './items-list/items-list.component';
     ModelsListComponent,
     DevicesListComponent,
     OrdersListComponent,
-    ItemsListComponent
+    ItemsListComponent,
+    MakeOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -48,8 +50,8 @@ import { ItemsListComponent } from './items-list/items-list.component';
     NgbModule,
     RouterModule.forRoot(
       [
-        {path: '', component: ModelsListComponent},
-        {path: 'devices', component: DevicesListComponent},
+        {path: '', component: DevicesListComponent},
+        {path: 'models', component: ModelsListComponent},
         {path: 'orders', component: OrdersListComponent},
         {path: 'items', component: ItemsListComponent},
       ]

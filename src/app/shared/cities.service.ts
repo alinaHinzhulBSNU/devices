@@ -5,14 +5,13 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class DevicesService {
-
+export class CitiesService {
   readonly rootURL = environment.baseURL; // URL, що використовується у всіх CRUD - запитах
-
+  
   constructor(public http: HttpClient) { }
 
   //CRUD OPERATIONS
-  getDevices(){
-    return this.http.get(this.rootURL + 'devices');
+  getCities(){
+    return this.http.get(this.rootURL + 'cities');
   }
 }

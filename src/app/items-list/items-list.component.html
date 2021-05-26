@@ -1,1 +1,85 @@
-<p>items-list works!</p>
+<!--Items to buy-->
+<div class="row" *ngIf="items.length > 0">
+    <div class="order-form col-md-4">
+        <make-order></make-order>
+    </div>
+    <div class="col-md-8">
+        <table class="table table-hover table-bordered">
+            <caption class="text-center">Items list</caption>
+            <thead class="thead-light">
+                <tr class="text-center">
+                    <th class="text-center align-middle" scope="col">
+                        Model
+                    </th>
+                    <th class="text-center align-middle" scope="col">
+                        Ram / Rom
+                    </th>
+                    <th class="text-center align-middle" scope="col">
+                        Diagonal
+                    </th>
+                    <th class="text-center align-middle" scope="col">
+                        Color
+                    </th>
+                    <th class="text-center align-middle" scope="col">
+                        Price
+                    </th>
+                    <th class="text-center align-middle" scope="col">
+                        Discount
+                    </th>
+                    <th class="text-center align-middle" scope="col">
+                    </th>
+                    <th class="text-center align-middle" scope="col">
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of items">
+                    <!--Model-->
+                    <td class="text-center font-weight-bold align-middle">
+                        {{ item.device.model.model_name }}
+                    </td>
+
+                    <!--Ram / Rom-->
+                    <td class="text-center align-middle">
+                        {{ item.device.ram }}&nbsp;/&nbsp;{{ item.device.rom }}&nbsp;GB
+                    </td>
+
+                    <!--Diagonal-->
+                    <td class="text-center align-middle">
+                        {{ item.device.model.diagonal | number : '1.2-2' }}″
+                    </td>
+
+                    <!--Color-->
+                    <td class="text-center align-middle">
+                        {{ item.device.color }}
+                    </td>
+
+                    <!--Price-->
+                    <td class="text-center align-middle">
+                        <span class="text-info">{{ item.quantity }}</span>&nbsp;×&nbsp;{{ item.device.price }}&nbsp;₴
+                    </td>
+
+                    <!--Discount-->
+                    <td class="text-center align-middle">
+                        - {{ item.device.discount }}%
+                    </td>
+
+                    <!--Add-->
+                    <td class="text-center align-middle">
+                        <i class="fas fa-plus-square text-success" (click)="add(item)"></i>
+                    </td>
+
+                    <!--Remove-->
+                    <td class="text-center align-middle">
+                        <i class="fas fa-minus-square text-danger" (click)="remove(item)"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--Prompt-->
+<div class="row" *ngIf="items.length == 0">
+    <h3 class="text-secondary text-center">There is nothing in your cart :)</h3>
+</div>
