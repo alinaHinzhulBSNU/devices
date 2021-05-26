@@ -7,7 +7,6 @@ import { NewItem } from '../models/new-item.model';
   styleUrls: ['./items-list.component.scss']
 })
 export class ItemsListComponent implements OnInit {
-  
   items: NewItem[] = [];
 
   constructor() { }

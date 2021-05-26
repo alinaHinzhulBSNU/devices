@@ -1,1 +1,38 @@
-<p>orders-list works!</p>
+<h2 class="text-info p-3">Orders:</h2>
+<div class="row">
+    <table class="table table-hover table-bordered">
+        <caption class="text-center">Orders list</caption>
+        <thead class="thead-light">
+            <tr class="text-center">
+                <th class="text-center align-middle" scope="col">
+                    Order
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of orders">
+                <td>
+                    <div class="row">
+                        <!--Order details-->
+                        <div class="col-md-10 text-left">
+                            <span class="font-weight-bold">Customer:</span>&nbsp;{{ order.customer_name }};
+                            &nbsp;<span class="font-weight-bold">Phone:</span>&nbsp;{{ order.phone }};
+                            &nbsp;<span class="font-weight-bold">Address:</span>&nbsp;{{ order.address }};
+                            &nbsp;<span class="font-weight-bold">City:</span>&nbsp;{{ order.city.city_name }};
+                            &nbsp;<span class="font-weight-bold">Date:</span>&nbsp;{{ order.date }}<br>
+                            <span class="font-weight-bold">Total sum:</span>
+                            <span class="text-success">
+                                &nbsp;{{ getTotalSum(order) }}$
+                            </span>
+                        </div>
+
+                        <!--Delete-->
+                        <div class="col-md-2 text-right">
+                            <i class="text-danger far fa-times-circle" (click)="delete(order.id)"></i>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

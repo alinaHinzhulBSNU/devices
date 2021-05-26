@@ -14,8 +14,7 @@
     
         <!--Price-->
         <p class="price text-info">
-            {{ device.price }}
-            &nbsp;₴
+            {{ device.total_quantity }}&nbsp;×&nbsp;{{ device.price }}$
             <span class="discount text-danger" *ngIf="device.discount > 0">
                     -&nbsp;{{ device.discount }}&nbsp;%
             </span>

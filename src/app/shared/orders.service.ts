@@ -7,21 +7,20 @@ import { Order } from '../models/order.model';
   providedIn: 'root'
 })
 export class OrdersService {
-
   readonly rootURL = environment.baseURL; // URL, що використовується у всіх CRUD - запитах
   
   constructor(public http: HttpClient) { }
 
-  // Додавання замовлення
-  addOrder(order: Order, date: string){
-    let params = new HttpParams();
-    params = params.append('address', order.address);
-    params = params.append('customer_name', order.customer_name);
-    params = params.append('phone', order.phone);
-    params = params.append('date', date);
-    params = params.append('city_id', "1");
+  // CRUD
+  getOrders(){ // GET
+    return this.http.get(this.rootURL + 'orders');
+  }
 
-    let URL = this.rootURL + "orders?" + params.toString();
-    return this.http.get(URL);
+  addOrder(formData){ // POST 
+    return this.http.post(this.rootURL + 'orders', formData);
+  }
+
+  deleteOrder(id: number){ // DELETE
+    return this.http.delete(this.rootURL + 'orders/' + id);
   }
 }

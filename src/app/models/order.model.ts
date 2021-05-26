@@ -1,4 +1,5 @@
 import { City } from "./city.model";
+import { OrderedItem } from "./ordered-item.model";
 
 export class Order {
     id: number;
@@ -7,4 +8,5 @@ export class Order {
     date: Date;
     phone: string;
     city: City;
+    items: OrderedItem[];
 }

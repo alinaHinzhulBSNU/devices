@@ -1,0 +1,10 @@
+tr{
+    cursor: pointer;
+}
+i{
+    font-size: xx-large;
+    cursor: pointer;
+    &:hover{
+        opacity: 0.8;
+    }
+}

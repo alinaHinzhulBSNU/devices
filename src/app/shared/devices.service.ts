@@ -15,4 +15,8 @@ export class DevicesService {
   getDevices(){
     return this.http.get(this.rootURL + 'devices');
   }
+
+  getDevice(id: number){
+    return this.http.get(this.rootURL + 'devices/' + id);
+  }
 }

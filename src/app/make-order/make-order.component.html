@@ -1,6 +1,7 @@
 <h4 class="text-secondary text-center p-3">Your order:</h4>
 <div class="justify-content-center">
     <form [formGroup]="form" autocomplete="off" (submit)="makeOrder()">
+        <input type="hidden" formControlName="date">
         <div class="form-group row">
             <label class="label col-md-4 col-sm-4 text-right">Name:</label>
             <input class="form-control col-md-8 col-sm-8" formControlName="customer_name">
@@ -15,7 +16,7 @@
         </div>
         <div class="form-group row">
             <label class="label col-md-4 col-sm-4 text-right">City:</label>
-            <select class="form-control col-md-8 col-sm-8" formControlName="city">
+            <select class="form-control col-md-8 col-sm-8" formControlName="city_id">
                 <option *ngFor="let city of cities" [value]="city.id">
                     {{ city.city_name }}, {{ city.country.country_name }}
                 </option>
