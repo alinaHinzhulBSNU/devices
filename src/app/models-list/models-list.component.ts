@@ -8,23 +8,38 @@ import { ModelsService } from '../shared/models.service';
   styleUrls: ['./models-list.component.scss']
 })
 export class ModelsListComponent implements OnInit {
-
   models: Model[] = [];
-  
+
   constructor(private service: ModelsService) { }
 
   ngOnInit(): void {
-    this.loadModels();
+    this.refreshList();
+
+    this.service.notifyObservable.subscribe(
+      res => {
+        this.refreshList();
+    });
   }
 
   // Get all models
-  loadModels(){
+  refreshList(){
     this.service.getModels().subscribe(
       data => {
         this.models = data as Model[];
-        console.log(this.models);
       }
     );
   }
 
+  delete(id: number){
+    this.service.deleteModel(id).subscribe(
+      data => {
+        this.refreshList();
+      }
+    );
+  }
+  
+  
+  selectModel(model: Model){
+    this.service.setSelectedModel(model);
+  }
 }

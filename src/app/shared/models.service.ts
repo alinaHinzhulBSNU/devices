@@ -1,59 +1,45 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Model } from '../models/model.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModelsService {
-
   readonly rootURL = environment.baseURL; // URL, що використовується у всіх CRUD - запитах
+  public selectedModel: Model = new Model();
+
+  // Refresh all related components
+  public notify = new BehaviorSubject({refresh: false});
+  notifyObservable = this.notify.asObservable();
+
+  setSelectedModel(model: Model){
+    this.selectedModel = model;
+    this.refresh();
+  }
+
+  refresh(){
+    this.notify.next({refresh: true});
+  }
 
   constructor(public http: HttpClient) { }
 
   //CRUD OPERATIONS
-  
-  //Get all models
-  getModels(){
+  getModels(){ // GET
     return this.http.get(this.rootURL + 'models');
   }
 
-  // Get one model
-  getModel(id: number){
-    return this.http.get(this.rootURL + 'models/' + id);
+  addModel(formData){ // POST
+    return this.http.post(this.rootURL + 'models', formData);
   }
 
-  // Додавання пристрою
-  /*addDevice(device: Device){
-    let params = new HttpParams();
-    params = params.append('number', device.number);
-    params = params.append('presentation_year', String(device.presentation_year));
-    params = params.append('model_code', device.model);
-
-    return this.http.get(this.rootURL + '/devices/add?' + params.toString());
+  editModel(formData){ // PUT
+    return this.http.put(this.rootURL + 'models/' + formData.id, formData);
   }
 
-  // Редагування пристрою
-  editDevice(device: Device){
-    let params = new HttpParams();
-    params = params.append('number', device.number);
-    params = params.append('presentation_year', String(device.presentation_year));
-
-    return this.http.get(this.rootURL + '/devices/edit/' + device.id + '?' + params.toString());
+  deleteModel(id){ // DELETE
+    return this.http.delete(this.rootURL + 'models/' + id);
   }
-
-  // Видалення пристрою
-  deleteDevice(id: number){
-    return this.http.delete(this.rootURL + '/devices/delete/' + id);
-  }
-
-  // Отримати всі доступні моделі
-  getModels(){
-    return this.http.get(this.rootURL + '/devices/models');
-  }
-
-  // Отримати список пристроїв за моделлю
-  getDevicesByModel(id: number){
-    return this.http.get(this.rootURL + '/devices/get-by-model/' + id);
-  }*/
 }

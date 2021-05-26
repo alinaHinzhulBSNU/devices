@@ -33,6 +33,7 @@ import { ItemsListComponent } from './items-list/items-list.component';
 import { MakeOrderComponent } from './make-order/make-order.component';
 import { BrandsListComponent } from './brands-list/brands-list.component';
 import { BrandsFormComponent } from './brands-form/brands-form.component';
+import { ModelsFormComponent } from './models-form/models-form.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { BrandsFormComponent } from './brands-form/brands-form.component';
     ItemsListComponent,
     MakeOrderComponent,
     BrandsListComponent,
-    BrandsFormComponent
+    BrandsFormComponent,
+    ModelsFormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,17 @@
+tr{
+    cursor: pointer;
+}
+i{
+    font-size: xx-large;
+    cursor: pointer;
+    &:hover{
+        opacity: 0.8;
+    }
+}
+.model-form{
+    padding: 3%;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+    &:hover{
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+    }
+}
